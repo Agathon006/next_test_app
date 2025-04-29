@@ -1,4 +1,3 @@
-import { ReturnButton } from '@/components/ReturnButton';
 import { getUserById } from '@/service/queries/getUserById';
 
 export default async function UserPage({ params }: { params: Promise<{ id: string }> }) {
@@ -8,7 +7,6 @@ export default async function UserPage({ params }: { params: Promise<{ id: strin
 
   return (
     <div className="mt-2">
-      <ReturnButton />
       <p>Name: {user.name}</p>
       <p>Username: {user.username}</p>
       <p>Email: {user.email}</p>

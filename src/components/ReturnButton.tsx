@@ -6,7 +6,7 @@ export const ReturnButton = () => {
 
   return (
     <button
-      className="p-2 cursor-pointer text-yellow-400"
+      className="p-2 cursor-pointer text-yellow-400 w-min"
       type="button"
       onClick={() => router.back()}
     >

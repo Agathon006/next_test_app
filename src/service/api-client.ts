@@ -3,11 +3,6 @@ type BaseAPIOptions = RequestInit & {
   cookies?(): string;
 };
 
-type APIResponse<T> = {
-  data: T;
-  error?: { message?: string };
-};
-
 export class BaseAPI {
   private baseURL: string;
   private defaults: RequestInit;
@@ -29,7 +24,7 @@ export class BaseAPI {
         ...(options.headers || {}),
       },
     });
-  
+
     const json = await response.json();
 
     if (!response.ok && json.error) {

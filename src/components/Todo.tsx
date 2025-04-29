@@ -4,7 +4,10 @@ import { Todo as TodoType } from '@/types';
 
 export function Todo({ todo }: { todo: TodoType }) {
     const handleTodoOnChange = async () => {
-        await updateTodoAction(todo.id, !todo.completed);
+        await updateTodoAction({
+            id: todo.id,
+            changes: { completed: !todo.completed }
+        });
     };
 
     return (

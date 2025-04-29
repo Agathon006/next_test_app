@@ -3,9 +3,15 @@
 import { revalidateTag } from 'next/cache';
 
 import { updateTodo } from '@/service/mutations/updateTodo';
+import { Todo } from '@/types';
 
-export async function updateTodoAction(id: number, completed: boolean) {
-  const updatedTodo = await updateTodo(id, completed);
+type UpdateTodoActionParams = {
+  id: number;
+  changes: Partial<Todo>;
+};
+
+export async function updateTodoAction({ id, changes }: UpdateTodoActionParams) {
+  const updatedTodo = await updateTodo({ id, changes });
 
   revalidateTag('todos');
 

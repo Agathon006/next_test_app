@@ -1,16 +1,16 @@
-import { ReturnButton } from '@/components/ReturnButton';
 import { getAlbumById } from '@/service/queries/getAlbumById';
 import { getAlbumPhotos } from '@/service/queries/getAlbumPhotos';
 
 export default async function AlbumsPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
-  const album = await getAlbumById(id);
-  const albumPhotos = await getAlbumPhotos(id);
+  const [album, albumPhotos] = await Promise.all([
+    getAlbumById(id),
+    getAlbumPhotos(id)
+  ]);
 
   return (
     <div className="mt-2">
-      <ReturnButton />
       <p>Title: {album.title}</p>
       <section className="ml-2">
         {!albumPhotos.length ? (
