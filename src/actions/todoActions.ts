@@ -1,6 +1,7 @@
 'use server';
 
 import { revalidateTag } from 'next/cache';
+
 import { DataService } from '@/services/dataService';
 
 export async function updateTodoAction(id: number, completed: boolean) {

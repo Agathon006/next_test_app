@@ -1,5 +1,6 @@
+import { Album, Comment, Photo,Post, Todo, User } from '@/types';
+
 import { API_BASE_URL, API_ENDPOINTS } from './api';
-import { Todo, User, Post, Album, Comment, Photo } from '@/types';
 
 type FetchOptions = {
   cache?: RequestCache;

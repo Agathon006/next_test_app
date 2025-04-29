@@ -1,5 +1,6 @@
-import { DataService } from '@/services/dataService';
 import Link from 'next/link';
+
+import { DataService } from '@/services/dataService';
 
 export default async function AlbumsPage() {
   const albums = await DataService.getAlbums();

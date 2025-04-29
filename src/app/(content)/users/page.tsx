@@ -1,5 +1,6 @@
-import { DataService } from '@/services/dataService';
 import Link from 'next/link';
+
+import { DataService } from '@/services/dataService';
 
 export default async function UsersPage() {
   const users = await DataService.getUsers();

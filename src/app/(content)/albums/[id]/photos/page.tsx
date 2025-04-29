@@ -1,5 +1,4 @@
 import { ReturnButton } from '@/components/ReturnButton';
-
 import { DataService } from '@/services/dataService';
 
 export default async function AlbumsPage({ params }: { params: Promise<{ id: string }> }) {

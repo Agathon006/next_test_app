@@ -1,6 +1,6 @@
 'use client';
-import { Todo as TodoType } from '@/types';
 import { updateTodoAction } from '@/actions/todoActions';
+import { Todo as TodoType } from '@/types';
 
 export function Todo({ todo }: { todo: TodoType }) {
   const handleTodoOnChange = async () => {
