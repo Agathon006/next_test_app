@@ -1,8 +1,8 @@
 import { Todo } from '@/components/Todo';
-import { DataService } from '@/services/dataService';
+import { getTodos } from '@/service/queries/getTodos';
 
 export default async function TodosPage() {
-  const todos = await DataService.getTodos();
+  const todos = await getTodos();
 
   return (
     <div>

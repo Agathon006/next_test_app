@@ -1,10 +1,10 @@
 import { ReturnButton } from '@/components/ReturnButton';
-import { DataService } from '@/services/dataService';
+import { getUserById } from '@/service/queries/getUserById';
 
 export default async function UserPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
-  const user = await DataService.getUserById(id);
+  const user = await getUserById(id);
 
   return (
     <div className="mt-2">

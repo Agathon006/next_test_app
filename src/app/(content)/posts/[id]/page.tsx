@@ -1,11 +1,12 @@
 import { ReturnButton } from '@/components/ReturnButton';
-import { DataService } from '@/services/dataService';
+import { getPostById } from '@/service/queries/getPostById';
+import { getPostComments } from '@/service/queries/getPostComments';
 
 export default async function PostPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
-  const post = await DataService.getPostById(id);
-  const comments = await DataService.getPostComments(id);
+  const post = await getPostById(id);
+  const comments = await getPostComments(id);
 
   return (
     <div className="mt-2">

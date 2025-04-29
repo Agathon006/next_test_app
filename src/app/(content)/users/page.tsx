@@ -1,9 +1,9 @@
+import { getUsers } from '@/service/queries/getUsers';
 import Link from 'next/link';
 
-import { DataService } from '@/services/dataService';
 
 export default async function UsersPage() {
-  const users = await DataService.getUsers();
+  const users = await getUsers();
 
   return (
     <div>

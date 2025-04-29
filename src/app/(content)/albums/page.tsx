@@ -1,9 +1,9 @@
+import { getAlbums } from '@/service/queries/getAlbums';
 import Link from 'next/link';
 
-import { DataService } from '@/services/dataService';
 
 export default async function AlbumsPage() {
-  const albums = await DataService.getAlbums();
+  const albums = await getAlbums();
 
   return (
     <div>

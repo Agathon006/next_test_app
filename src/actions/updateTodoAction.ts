@@ -2,10 +2,10 @@
 
 import { revalidateTag } from 'next/cache';
 
-import { DataService } from '@/services/dataService';
+import { updateTodo } from '@/service/mutations/updateTodo';
 
 export async function updateTodoAction(id: number, completed: boolean) {
-  const updatedTodo = await DataService.updateTodo(id, completed);
+  const updatedTodo = await updateTodo(id, completed);
 
   revalidateTag('todos');
 

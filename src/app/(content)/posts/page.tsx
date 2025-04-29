@@ -1,9 +1,8 @@
+import { getPosts } from '@/service/queries/getPosts';
 import Link from 'next/link';
 
-import { DataService } from '@/services/dataService';
-
 export default async function PostsPage() {
-  const posts = await DataService.getPosts();
+  const posts = await getPosts();
 
   return (
     <div>
