@@ -1,5 +1,5 @@
-import { DataService } from "@/services/dataService";
-import Link from "next/link";
+import { DataService } from '@/services/dataService';
+import Link from 'next/link';
 
 export default async function AlbumsPage() {
   const albums = await DataService.getAlbums();
@@ -8,11 +8,9 @@ export default async function AlbumsPage() {
     <div>
       <p className="mt-2 text-2xl">Albums page</p>
       <ul>
-        {albums.map((album) => (
+        {albums.map(album => (
           <li key={album.id} className="mt-2">
-            <Link href={`albums/${album.id}/photos`}>
-              {album.title}
-            </Link>
+            <Link href={`albums/${album.id}/photos`}>{album.title}</Link>
           </li>
         ))}
       </ul>

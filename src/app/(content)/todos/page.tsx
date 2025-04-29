@@ -1,5 +1,5 @@
-import { Todo } from "@/components/Todo";
-import { DataService } from "@/services/dataService";
+import { Todo } from '@/components/Todo';
+import { DataService } from '@/services/dataService';
 
 export default async function TodosPage() {
   const todos = await DataService.getTodos();
@@ -8,7 +8,7 @@ export default async function TodosPage() {
     <div>
       <p className="mt-2 text-2xl">Todos page</p>
       <ul>
-        {todos.map((todo) => (
+        {todos.map(todo => (
           <li key={todo.id} className="mt-2">
             <Todo todo={todo} />
           </li>
