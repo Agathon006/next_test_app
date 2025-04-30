@@ -2,8 +2,8 @@
 
 import { revalidateTag } from 'next/cache';
 
-import type { Todo } from '@/schemas';
-import { updateTodo } from '@/service/mutations/updateTodo';
+import type { Todo } from '@/schemas/todos';
+import { updateTodo } from '@/service/mutations/todos/updateTodo';
 
 type UpdateTodoActionParams = {
   id: string;

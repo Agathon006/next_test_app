@@ -1,5 +1,5 @@
-import { getAlbumById } from '@/service/queries/getAlbumById';
-import { getAlbumPhotos } from '@/service/queries/getAlbumPhotos';
+import { getAlbumById } from '@/service/queries/albums/getAlbumById';
+import { getAlbumPhotos } from '@/service/queries/albums/getAlbumPhotos';
 
 export default async function AlbumsPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;

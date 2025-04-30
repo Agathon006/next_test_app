@@ -1,5 +1,5 @@
-import { getPostById } from '@/service/queries/getPostById';
-import { getPostComments } from '@/service/queries/getPostComments';
+import { getPostById } from '@/service/queries/posts/getPostById';
+import { getPostComments } from '@/service/queries/posts/getPostComments';
 
 export default async function PostPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;

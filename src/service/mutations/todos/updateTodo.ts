@@ -1,5 +1,5 @@
-import type { Todo } from '@/schemas';
-import { TodoSchema, UpdateTodoParamsSchema } from '@/schemas';
+import type { Todo } from '@/schemas/todos';
+import { TodoSchema} from '@/schemas/todos';
 import { api } from '@/service/api-client';
 
 type UpdateTodoParams = {
@@ -8,8 +8,6 @@ type UpdateTodoParams = {
 };
 
 export async function updateTodo({ id, changes }: UpdateTodoParams): Promise<Todo> {
-  await UpdateTodoParamsSchema.parseAsync({ id, changes });
-
   return api.patch<Todo>(
     `/todos/${id}`,
     changes,

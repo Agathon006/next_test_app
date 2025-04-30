@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
-import type { User } from '@/schemas';
-import { UserSchema } from '@/schemas';
+import type { User } from '@/schemas/users';
+import { UserSchema } from '@/schemas/users';
 import { api } from '@/service/api-client';
 
 export async function getUsers(): Promise<User[]> {

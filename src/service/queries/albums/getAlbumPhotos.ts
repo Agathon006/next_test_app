@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
-import type { Photo } from '@/schemas';
-import { PhotoSchema } from '@/schemas';
+import type { Photo } from '@/schemas/albums';
+import { PhotoSchema } from '@/schemas/albums';
 import { api } from '@/service/api-client';
 
 export async function getAlbumPhotos(id: string): Promise<Photo[]> {

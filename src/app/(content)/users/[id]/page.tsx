@@ -1,4 +1,4 @@
-import { getUserById } from '@/service/queries/getUserById';
+import { getUserById } from '@/service/queries/users/getUserById';
 
 export default async function UserPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;

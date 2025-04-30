@@ -1,5 +1,5 @@
-import type { Album } from '@/schemas';
-import { AlbumSchema } from '@/schemas';
+import type { Album } from '@/schemas/albums';
+import { AlbumSchema } from '@/schemas/albums';
 import { api } from '@/service/api-client';
 
 export async function getAlbumById(id: string): Promise<Album> {

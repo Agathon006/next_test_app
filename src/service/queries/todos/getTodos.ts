@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
-import type { Todo } from '@/schemas';
-import { TodoSchema } from '@/schemas';
+import type { Todo } from '@/schemas/todos';
+import { TodoSchema } from '@/schemas/todos';
 import { api } from '@/service/api-client';
 
 export async function getTodos(): Promise<Todo[]> {

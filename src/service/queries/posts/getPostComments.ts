@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
-import type { Comment } from '@/schemas';
-import { CommentSchema } from '@/schemas';
+import type { Comment } from '@/schemas/posts';
+import { CommentSchema } from '@/schemas/posts';
 import { api } from '@/service/api-client';
 
 export async function getPostComments(postId: string): Promise<Comment[]> {

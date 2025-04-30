@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { getPosts } from '@/service/queries/getPosts';
+import { getPosts } from '@/service/queries/posts/getPosts';
 
 export default async function PostsPage() {
   const posts = await getPosts();

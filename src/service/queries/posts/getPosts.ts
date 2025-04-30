@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
-import type { Post } from '@/schemas';
-import { PostSchema } from '@/schemas';
+import type { Post } from '@/schemas/posts';
+import { PostSchema } from '@/schemas/posts';
 import { api } from '@/service/api-client';
 
 export async function getPosts(): Promise<Post[]> {
