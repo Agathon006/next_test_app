@@ -11,13 +11,15 @@
     "format": "prettier --write .",
     "lint": "next lint",
     "lint-fix": "next lint --fix",
+    "tsc": "tsc",
     "prepare": "husky"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.74.11",
     "next": "15.3.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "zod": "^3.24.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",

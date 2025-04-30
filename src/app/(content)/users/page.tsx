@@ -1,5 +1,6 @@
-import { getUsers } from '@/service/queries/getUsers';
 import Link from 'next/link';
+
+import { getUsers } from '@/service/queries/getUsers';
 
 
 export default async function UsersPage() {

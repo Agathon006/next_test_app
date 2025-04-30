@@ -1,6 +1,6 @@
 'use client';
 import { useUpdateTodo } from '@/hooks/useUpdateTodo';
-import { Todo as TodoType } from '@/types';
+import { Todo as TodoType } from '@/schemas';
 
 export function Todo({ todo }: { todo: TodoType }) {
     const { mutate, isPending, isError, error } = useUpdateTodo();
@@ -24,13 +24,12 @@ export function Todo({ todo }: { todo: TodoType }) {
                 id={`checkbox-${todo.id}`}
                 disabled={isPending}
             />
-            <label
-                className={`ml-2 ${isPending ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}`}
+            <label 
+                className={`ml-2 ${isPending ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}`} 
                 htmlFor={`checkbox-${todo.id}`}
                 onClick={(e) => isPending && e.preventDefault()}
             >
                 {todo.title}
-                {isPending && <span className="ml-2 text-sm text-blue-500"> (Updating...)</span>}
                 {isError && <span className="ml-2 text-sm text-red-500"> (Error: {error?.message || 'Failed to update'})</span>}
             </label>
         </>

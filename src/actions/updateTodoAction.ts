@@ -2,11 +2,11 @@
 
 import { revalidateTag } from 'next/cache';
 
+import type { Todo } from '@/schemas';
 import { updateTodo } from '@/service/mutations/updateTodo';
-import { Todo } from '@/types';
 
 type UpdateTodoActionParams = {
-  id: number;
+  id: string;
   changes: Partial<Todo>;
 };
 

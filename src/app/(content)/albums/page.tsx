@@ -1,5 +1,6 @@
-import { getAlbums } from '@/service/queries/getAlbums';
 import Link from 'next/link';
+
+import { getAlbums } from '@/service/queries/getAlbums';
 
 
 export default async function AlbumsPage() {

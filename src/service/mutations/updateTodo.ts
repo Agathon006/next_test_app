@@ -1,13 +1,21 @@
+import type { Todo } from '@/schemas';
+import { TodoSchema, UpdateTodoParamsSchema } from '@/schemas';
 import { api } from '@/service/api-client';
-import { Todo } from '@/types';
 
 type UpdateTodoParams = {
-  id: number;
+  id: string;
   changes: Partial<Todo>;
 };
 
 export async function updateTodo({ id, changes }: UpdateTodoParams): Promise<Todo> {
-  return await api.patch<Todo>(`/todos/${id}`, changes, {
-    next: { tags: ['todos'] },
-  });
+  await UpdateTodoParamsSchema.parseAsync({ id, changes });
+
+  return api.patch<Todo>(
+    `/todos/${id}`,
+    changes,
+    {
+      next: { tags: ['todos'] },
+    },
+    TodoSchema
+  );
 }

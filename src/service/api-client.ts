@@ -1,3 +1,5 @@
+import { z } from 'zod';
+
 type BaseAPIOptions = RequestInit & {
   baseURL: string;
   cookies?(): string;
@@ -14,7 +16,7 @@ export class BaseAPI {
     this.cookies = cookies;
   }
 
-  private async handleRequest<T>(url: string, options: RequestInit): Promise<T> {
+  private async handleRequest<T>(url: string, options: RequestInit, schema?: z.ZodType<T>): Promise<T> {
     const response = await fetch(`${this.baseURL}${url}`, {
       ...this.defaults,
       ...options,
@@ -31,34 +33,40 @@ export class BaseAPI {
       throw new Error(json.error.message || 'Something went wrong.');
     }
 
-    return (json?.data ?? json) as T;
+    const data = (json?.data ?? json) as unknown;
+    
+    if (schema) {
+      return schema.parseAsync(data);
+    }
+    
+    return data as T;
   }
 
-  get<T>(url: string, options: RequestInit = {}) {
-    return this.handleRequest<T>(url, { ...options, method: 'GET' });
+  get<T>(url: string, options: RequestInit = {}, schema?: z.ZodType<T>) {
+    return this.handleRequest<T>(url, { ...options, method: 'GET' }, schema);
   }
 
-  post<T>(url: string, data?: unknown, options: RequestInit = {}) {
+  post<T>(url: string, data?: unknown, options: RequestInit = {}, schema?: z.ZodType<T>) {
     return this.handleRequest<T>(url, {
       ...options,
       method: 'POST',
       body: JSON.stringify(data),
-    });
+    }, schema);
   }
 
-  patch<T>(url: string, data?: unknown, options: RequestInit = {}) {
+  patch<T>(url: string, data?: unknown, options: RequestInit = {}, schema?: z.ZodType<T>) {
     return this.handleRequest<T>(url, {
       ...options,
       method: 'PATCH',
       body: JSON.stringify(data),
-    });
+    }, schema);
   }
 
-  delete<T>(url: string, options: RequestInit = {}) {
+  delete<T>(url: string, options: RequestInit = {}, schema?: z.ZodType<T>) {
     return this.handleRequest<T>(url, {
       ...options,
       method: 'DELETE',
-    });
+    }, schema);
   }
 }
 
