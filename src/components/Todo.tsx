@@ -1,13 +1,17 @@
 'use client';
-import { updateTodoAction } from '@/actions/updateTodoAction';
+import { useUpdateTodo } from '@/hooks/useUpdateTodo';
 import { Todo as TodoType } from '@/types';
 
 export function Todo({ todo }: { todo: TodoType }) {
-    const handleTodoOnChange = async () => {
-        await updateTodoAction({
-            id: todo.id,
-            changes: { completed: !todo.completed }
-        });
+    const { mutate, isPending, isError, error } = useUpdateTodo();
+
+    const handleTodoOnChange = () => {
+        if (!isPending) {
+            mutate({
+                id: todo.id,
+                changes: { completed: !todo.completed }
+            });
+        }
     };
 
     return (
@@ -18,9 +22,16 @@ export function Todo({ todo }: { todo: TodoType }) {
                 checked={todo.completed}
                 onChange={handleTodoOnChange}
                 id={`checkbox-${todo.id}`}
+                disabled={isPending}
             />
-            <label className="ml-2 cursor-pointer" htmlFor={`checkbox-${todo.id}`}>
+            <label
+                className={`ml-2 ${isPending ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}`}
+                htmlFor={`checkbox-${todo.id}`}
+                onClick={(e) => isPending && e.preventDefault()}
+            >
                 {todo.title}
+                {isPending && <span className="ml-2 text-sm text-blue-500"> (Updating...)</span>}
+                {isError && <span className="ml-2 text-sm text-red-500"> (Error: {error?.message || 'Failed to update'})</span>}
             </label>
         </>
     );

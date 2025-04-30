@@ -7,11 +7,7 @@ type UpdateTodoParams = {
 };
 
 export async function updateTodo({ id, changes }: UpdateTodoParams): Promise<Todo> {
-  return await api.patch<Todo>(
-    `/todos/${id}`,
-    { ...changes },
-    {
-      next: { tags: ['todos'] },
-    }
-  );
+  return await api.patch<Todo>(`/todos/${id}`, changes, {
+    next: { tags: ['todos'] },
+  });
 }
